@@ -11,7 +11,7 @@ class BaseOnnxEngine:
     @cost_time
     def __init__(self, model_path):
         self.model_path = model_path
-        self.session = ort.InferenceSession(self.model_path, providers=['CPUExecutionProvider'])
+        self.session = ort.InferenceSession(self.model_path, providers=['CUDAExecutionProvider'])
         # 默认YOLO模型输入输出均为一个节点
         self.input_name = self.session.get_inputs()[0].name
         self.output_name = self.session.get_outputs()[0].name
